@@ -202,7 +202,10 @@ export default class SynchronizedOverlay extends OLOverlay {
       if (element.parentNode && element.parentNode.childNodes) {
         for (const node of Array.from(element.parentNode.childNodes)) {
           const clonedNode = cloneNode(node, null);
-          this.element.appendChild(clonedNode);
+          // [jrom] Check if this.element exist
+          if (this.element) {
+            this.element.appendChild(clonedNode);
+          }
         }
       }
     }
